@@ -1,0 +1,13 @@
+{
+  "module": {
+    "name": "large_test",
+    "type": "feature",
+    "deviceTypes": [
+      "2in1",
+      "car",
+      "tv"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false
+  }
+}

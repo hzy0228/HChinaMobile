@@ -1,0 +1,17 @@
+{
+  "name": "default",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "common": "file:../../common",
+    "accessible": "file:../../features/accessible",
+    "discount": "file:../../features/discount",
+    "home": "file:../../features/home",
+    "mall": "file:../../features/mall",
+    "personal": "file:../../features/personal",
+  }
+}
+

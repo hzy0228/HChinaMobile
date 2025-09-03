@@ -1,0 +1,52 @@
+{
+  "module": {
+    "name": "large",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "LargeAbility",
+    "deviceTypes": [
+      "2in1",
+      "car",
+      "tv"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "LargeAbility",
+        "srcEntry": "./ets/largeability/LargeAbility.ets",
+        "description": "$string:LargeAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:LargeAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "LargeBackupAbility",
+        "srcEntry": "./ets/largebackupability/LargeBackupAbility.ets",
+        "type": "backup",
+        "exported": false,
+        "metadata": [
+          {
+            "name": "ohos.extension.backup",
+            "resource": "$profile:backup_config"
+          }
+        ],
+      }
+    ]
+  }
+}

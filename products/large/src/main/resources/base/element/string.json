@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "LargeAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "LargeAbility_label",
+      "value": "label"
+    }
+  ]
+}
