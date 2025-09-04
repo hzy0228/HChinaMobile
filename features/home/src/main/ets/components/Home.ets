@@ -1,4 +1,4 @@
-import { CopyrightBar, NoticeBar, TopBar, WelcomeBar } from 'common'
+import { AdBar, CopyrightBar, GridMenu, NoticeBar, TopBar, WelcomeBar } from 'common'
 
 @Component
 export struct Home {
@@ -8,6 +8,9 @@ export struct Home {
         TopBar()
         WelcomeBar()
         NoticeBar()
+        AdBar()
+        GridMenu()
+
 
         CopyrightBar()
       }
