@@ -2,7 +2,9 @@ import { UIConstants } from '../constants/UIConstants';
 
 @Component
 export struct TopBar {
+  static readonly HEIGHT = 47
   @State city: string = '北京'
+
 
   build() {
     Row() {
@@ -61,7 +63,7 @@ export struct TopBar {
 
     }
     .width('100%')
-    .height(46.8)
+    .height(TopBar.HEIGHT)
     .backgroundColor(UIConstants.COLOR_LIGHT)
     .padding({
       left: UIConstants.SPACE_ROW_MD,
