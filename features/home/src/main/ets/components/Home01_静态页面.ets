@@ -1,16 +1,4 @@
-import {
-  AdBar,
-  APIConstants,
-  CopyrightBar,
-  GridMenu,
-  NoticeBar,
-  TopBar,
-  TopMaskBar,
-  UIConstants,
-  WelcomeBar
-} from 'common'
-import { AppVO, GoodsVO, homeModel } from '../viewmodels/HomeModel'
-import { JSON } from '@kit.ArkTS'
+import { AdBar, CopyrightBar, GridMenu, NoticeBar, TopBar, TopMaskBar, UIConstants, WelcomeBar } from 'common'
 
 @Extend(Text)
 function cmText(fs: number = UIConstants.FONT_LG, fc: string = UIConstants.COLOR_DARKER, mt: number = 0) {
@@ -26,15 +14,6 @@ export struct Home {
   floorColors: string[] = ['#85CF22', '#FF5089', '#9832FF', '#23B3E9', '117DEA', 'E40077']
   @State showTopMask: boolean = false
   scroller: Scroller = new Scroller()
-  @State appList: AppVO[] = []
-  @State goodsList: GoodsVO[] = []
-
-  async aboutToAppear() {
-    this.appList = await homeModel.appRecommend()
-    console.log('--猜你喜欢动态数据：', JSON.stringify(this.appList))
-    this.goodsList = await homeModel.queryGoodsInfo()
-    console.log('--商品推荐动态数据：', JSON.stringify(this.goodsList))
-  }
 
   @Builder
   floorHeader(idx: number) {
@@ -141,84 +120,81 @@ export struct Home {
           //F7
           this.floorHeader(1)
           Grid() {
-            ForEach(this.goodsList, (item: GoodsVO) => {
-              GridItem() {
-                Column() {
-                  Image(APIConstants.BASE + item.pictureUrl)
-                    .width('70%')
-                  Text(item.goodsName)
-                    .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
-                  Text(item.price)
-                    .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
+            GridItem() {
+              Column() {
+                Image('images/phone01.jpg')
+                  .width('70%')
+                Text('手机1')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
+                Text('￥7,499')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
 
-                }
-                .width('100%')
-                .padding({
-                  top: UIConstants.SPACE_COL_XL,
-                  bottom: UIConstants.SPACE_COL_XL
-                })
-                .borderWidth(UIConstants.BORDER_WIDTH_SM)
-                .borderColor(UIConstants.COLOR_LIGHT)
               }
-            }, (item: GoodsVO) => item.goodsId)
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_XL,
+                bottom: UIConstants.SPACE_COL_XL
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
 
+            GridItem() {
+              Column() {
+                Image('images/phone01.jpg')
+                  .width('70%')
+                Text('手机1')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
+                Text('￥7,499')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
 
-            // GridItem() {
-            //   Column() {
-            //     Image('images/phone01.jpg')
-            //       .width('70%')
-            //     Text('手机1')
-            //       .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
-            //     Text('￥7,499')
-            //       .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
-            //
-            //   }
-            //   .width('100%')
-            //   .padding({
-            //     top: UIConstants.SPACE_COL_XL,
-            //     bottom: UIConstants.SPACE_COL_XL
-            //   })
-            //   .borderWidth(UIConstants.BORDER_WIDTH_SM)
-            //   .borderColor(UIConstants.COLOR_LIGHT)
-            // }
-            //
-            // GridItem() {
-            //   Column() {
-            //     Image('images/phone01.jpg')
-            //       .width('70%')
-            //     Text('手机1')
-            //       .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
-            //     Text('￥7,499')
-            //       .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
-            //
-            //   }
-            //   .width('100%')
-            //   .padding({
-            //     top: UIConstants.SPACE_COL_XL,
-            //     bottom: UIConstants.SPACE_COL_XL
-            //   })
-            //   .borderWidth(UIConstants.BORDER_WIDTH_SM)
-            //   .borderColor(UIConstants.COLOR_LIGHT)
-            // }
-            //
-            // GridItem() {
-            //   Column() {
-            //     Image('images/phone01.jpg')
-            //       .width('70%')
-            //     Text('手机1')
-            //       .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
-            //     Text('￥7,499')
-            //       .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
-            //
-            //   }
-            //   .width('100%')
-            //   .padding({
-            //     top: UIConstants.SPACE_COL_XL,
-            //     bottom: UIConstants.SPACE_COL_XL
-            //   })
-            //   .borderWidth(UIConstants.BORDER_WIDTH_SM)
-            //   .borderColor(UIConstants.COLOR_LIGHT)
-            // }
+              }
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_XL,
+                bottom: UIConstants.SPACE_COL_XL
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
+
+            GridItem() {
+              Column() {
+                Image('images/phone01.jpg')
+                  .width('70%')
+                Text('手机1')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
+                Text('￥7,499')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
+
+              }
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_XL,
+                bottom: UIConstants.SPACE_COL_XL
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
+
+            GridItem() {
+              Column() {
+                Image('images/phone01.jpg')
+                  .width('70%')
+                Text('手机1')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_XL)
+                Text('￥7,499')
+                  .cmText(UIConstants.FONT_LG, UIConstants.COLOR_GRAY, UIConstants.SPACE_COL_XS)
+
+              }
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_XL,
+                bottom: UIConstants.SPACE_COL_XL
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
           }
           .columnsTemplate('1fr 1fr')
 
@@ -690,107 +666,105 @@ export struct Home {
           //F11
           this.floorHeader(5)
           Grid() {
-            ForEach(this.appList, (item: AppVO) => {
-              GridItem() {
-                Column() {
-                  Image(APIConstants.BASE + item.pictureUrl)
-                    .width('80%')
-                  Text(item.title)
-                    .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
-                    .maxLines(1)
-                    .textOverflow({ overflow: TextOverflow.Ellipsis })
-                }
-                .width('100%')
-                .padding({
-                  top: UIConstants.SPACE_COL_MD,
-                  right: UIConstants.SPACE_ROW_SM,
-                  bottom: UIConstants.SPACE_COL_MD,
-                  left: UIConstants.SPACE_ROW_SM
-                })
-                .borderWidth(UIConstants.BORDER_WIDTH_SM)
-                .borderColor(UIConstants.COLOR_LIGHT)
+            GridItem() {
+              Column() {
+                Image('images/likes0.png')
+                  .width('80%')
+                Text('猜你喜欢描述文字0')
+                  .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
               }
-            }, (item: AppVO) => item.itemId)
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_MD,
+                right: UIConstants.SPACE_ROW_SM,
+                bottom: UIConstants.SPACE_COL_MD,
+                left: UIConstants.SPACE_ROW_SM
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
 
-            // GridItem() {
-            //   Column() {
-            //     Image('images/likes1.jpg')
-            //       .width('80%')
-            //     Text('猜你喜欢描述文字1')
-            //       .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
-            //       .maxLines(1)
-            //       .textOverflow({ overflow: TextOverflow.Ellipsis })
-            //   }
-            //   .width('100%')
-            //   .padding({
-            //     top: UIConstants.SPACE_COL_MD,
-            //     right: UIConstants.SPACE_ROW_SM,
-            //     bottom: UIConstants.SPACE_COL_MD,
-            //     left: UIConstants.SPACE_ROW_SM
-            //   })
-            //   .borderWidth(UIConstants.BORDER_WIDTH_SM)
-            //   .borderColor(UIConstants.COLOR_LIGHT)
-            // }
-            //
-            // GridItem() {
-            //   Column() {
-            //     Image('images/likes2.png')
-            //       .width('80%')
-            //     Text('猜你喜欢描述文字2')
-            //       .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
-            //       .maxLines(1)
-            //       .textOverflow({ overflow: TextOverflow.Ellipsis })
-            //   }
-            //   .width('100%')
-            //   .padding({
-            //     top: UIConstants.SPACE_COL_MD,
-            //     right: UIConstants.SPACE_ROW_SM,
-            //     bottom: UIConstants.SPACE_COL_MD,
-            //     left: UIConstants.SPACE_ROW_SM
-            //   })
-            //   .borderWidth(UIConstants.BORDER_WIDTH_SM)
-            //   .borderColor(UIConstants.COLOR_LIGHT)
-            // }
-            //
-            // GridItem() {
-            //   Column() {
-            //     Image('images/likes3.jpg')
-            //       .width('80%')
-            //     Text('猜你喜欢描述文字3')
-            //       .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
-            //       .maxLines(1)
-            //       .textOverflow({ overflow: TextOverflow.Ellipsis })
-            //   }
-            //   .width('100%')
-            //   .padding({
-            //     top: UIConstants.SPACE_COL_MD,
-            //     right: UIConstants.SPACE_ROW_SM,
-            //     bottom: UIConstants.SPACE_COL_MD,
-            //     left: UIConstants.SPACE_ROW_SM
-            //   })
-            //   .borderWidth(UIConstants.BORDER_WIDTH_SM)
-            //   .borderColor(UIConstants.COLOR_LIGHT)
-            // }
-            //
-            // GridItem() {
-            //   Column() {
-            //     Image('images/likes4.jpg')
-            //       .width('80%')
-            //     Text('猜你喜欢描述文字4')
-            //       .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
-            //       .maxLines(1)
-            //       .textOverflow({ overflow: TextOverflow.Ellipsis })
-            //   }
-            //   .width('100%')
-            //   .padding({
-            //     top: UIConstants.SPACE_COL_MD,
-            //     right: UIConstants.SPACE_ROW_SM,
-            //     bottom: UIConstants.SPACE_COL_MD,
-            //     left: UIConstants.SPACE_ROW_SM
-            //   })
-            //   .borderWidth(UIConstants.BORDER_WIDTH_SM)
-            //   .borderColor(UIConstants.COLOR_LIGHT)
-            // }
+            GridItem() {
+              Column() {
+                Image('images/likes1.jpg')
+                  .width('80%')
+                Text('猜你喜欢描述文字1')
+                  .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+              }
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_MD,
+                right: UIConstants.SPACE_ROW_SM,
+                bottom: UIConstants.SPACE_COL_MD,
+                left: UIConstants.SPACE_ROW_SM
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
+
+            GridItem() {
+              Column() {
+                Image('images/likes2.png')
+                  .width('80%')
+                Text('猜你喜欢描述文字2')
+                  .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+              }
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_MD,
+                right: UIConstants.SPACE_ROW_SM,
+                bottom: UIConstants.SPACE_COL_MD,
+                left: UIConstants.SPACE_ROW_SM
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
+
+            GridItem() {
+              Column() {
+                Image('images/likes3.jpg')
+                  .width('80%')
+                Text('猜你喜欢描述文字3')
+                  .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+              }
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_MD,
+                right: UIConstants.SPACE_ROW_SM,
+                bottom: UIConstants.SPACE_COL_MD,
+                left: UIConstants.SPACE_ROW_SM
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
+
+            GridItem() {
+              Column() {
+                Image('images/likes4.jpg')
+                  .width('80%')
+                Text('猜你喜欢描述文字4')
+                  .cmText(UIConstants.FONT_MD, UIConstants.COLOR_DARKER, UIConstants.SPACE_COL_SM)
+                  .maxLines(1)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+              }
+              .width('100%')
+              .padding({
+                top: UIConstants.SPACE_COL_MD,
+                right: UIConstants.SPACE_ROW_SM,
+                bottom: UIConstants.SPACE_COL_MD,
+                left: UIConstants.SPACE_ROW_SM
+              })
+              .borderWidth(UIConstants.BORDER_WIDTH_SM)
+              .borderColor(UIConstants.COLOR_LIGHT)
+            }
           }
           .width('100%')
           .columnsTemplate('1fr 1fr 1fr')

@@ -31,7 +31,8 @@ struct Index {
       //页签0：首页
       TabContent() {
         // Text('首页内容')
-        Home()
+        // Home()
+        DiscountList()
       }
       .tabBar(this.tab(0, '首页', '/images/home.png', '/images/home_active.png'))
 

@@ -1,9 +1,13 @@
 import { UIConstants } from '../constants/UIConstants'
 
+@Extend(Text) function cmText(){
+  .fontSize(UIConstants.FONT_XS)
+  .fontColor(UIConstants.COLOR_WHITE)
+}
 @Component
 export struct TopMaskBar {
   static readonly HEIGHT = 58
-  @State city: string = '北京'
+  @StorageLink('userLocation') city: string = '北京'
 
   build() {
     Row() {
@@ -14,9 +18,8 @@ export struct TopMaskBar {
         Span(this.city)
         Span(' ▼')
       }
+      .cmText()
       .margin({ left: UIConstants.SPACE_ROW_LG })
-      .fontSize(UIConstants.FONT_XS)
-      .fontColor(UIConstants.COLOR_WHITE)
       .onClick(() => {
         //TODO
         console.log('跳转到二级页面：城市选择')
@@ -25,8 +28,7 @@ export struct TopMaskBar {
       Blank() //占用所有空白元素
 
       Text('未登录')
-        .fontSize(UIConstants.FONT_XS)
-        .fontColor(UIConstants.COLOR_WHITE)
+        .cmText()
         .margin({ right: UIConstants.SPACE_ROW_LG })
         .onClick(() => {
 
@@ -38,7 +40,7 @@ export struct TopMaskBar {
     .linearGradient({
       angle: 180,
       colors: [
-        ['rgba(0,0,0,1)', 0.0], // 顶部半透明黑色
+        ['rgba(0,0,0,1)', 0.35], // 顶部半透明黑色
         ['rgba(0,0,0,0)', 1.0]// 底部完全透明
       ]
     })
